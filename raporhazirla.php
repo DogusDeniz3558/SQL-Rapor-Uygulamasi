@@ -2,7 +2,7 @@
 if (isset($_POST['sorgu'])) {
     require_once("baglan.php");
     // SQL sorgusu için kullanıcıdan gelen veriyi al
-    $sql = Filtrele($_POST['sorgu']);
+    $sql = $_POST['sorgu'];
 
 
     // PDO prepared ifadesi oluştur
@@ -52,8 +52,8 @@ if (isset($_POST['sorgu'])) {
             }
         }
     } catch (PDOException $e) {
-        // Hata durumunda özel hata mesajını ekrana bastır
-        echo '<div class="alert alert-danger mt-3">Sorgunuzda Hata Var: ' . $e->getMessage() . '</div>';
+        // Hata durumunda tüm detayları ekrana bastır
+        echo '<div class="alert alert-danger mt-3">Sorgunuzda Hata Var: '.  $e->getMessage() . '</div>';
     }
 } else {
     header("location:index.php");
