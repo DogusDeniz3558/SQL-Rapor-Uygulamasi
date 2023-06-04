@@ -1,22 +1,13 @@
 <?php
 if (!isset($_POST['tabloGetir'])){header("location:index.php"); exit();}
-
-// PDO ile MySQL bağlantısı için gerekli bilgileri ayarlayın
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "test";
+require_once("baglan.php");
 
 try {
-    // PDO bağlantısını oluşturun
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
     // Tabloları listelemek için bir SQL sorgusu hazırlayın
     $sql = "SHOW TABLES";
 
     // Sorguyu hazırlayın ve çalıştırın
-    $stmt = $conn->query($sql);
+    $stmt = $db->query($sql);
 
     // Tabloların listesini alın
     $tables = $stmt->fetchAll(PDO::FETCH_COLUMN);
@@ -31,7 +22,7 @@ try {
         $structureSql = "DESCRIBE `" . $tableName . "`";
 
         // Sorguyu hazırlayın ve çalıştırın
-        $structureStmt = $conn->query($structureSql);
+        $structureStmt = $db->query($structureSql);
 
         // Tablonun yapısını tablo olarak yazdırın
         if ($structureStmt->rowCount() > 0) {
@@ -75,5 +66,5 @@ try {
 }
 
 // PDO bağlantısını kapatın
-$conn = null;
+$db = null;
 ?>

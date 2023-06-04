@@ -1,9 +1,9 @@
 <?php
 if (isset($_POST['sorgu'])) {
     require_once("baglan.php");
-    $sorgu = Filtrele($_POST['sorgu']);
     // SQL sorgusu için kullanıcıdan gelen veriyi al
-    $sql = $_POST['sorgu'];
+    $sql = Filtrele($_POST['sorgu']);
+
 
     // PDO prepared ifadesi oluştur
     $islem = $db->prepare($sql);
