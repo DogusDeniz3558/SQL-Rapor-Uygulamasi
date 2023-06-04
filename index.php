@@ -99,7 +99,7 @@
             <li>Update : Update uyeler SET name = "Ahmett", surname="Karaa", age="455", gender = "Erkekk" Where id= 2
             </li>
             <li>Insert : INSERT INTO uyeler (name, surname, age, gender) VALUES ('Meral', 'Değerli', 18, 'Kadın');</li>
-            <li>Delete : DELETE FROMuyeler WHERE id = 2</li>
+            <li>Delete : DELETE FROM uyeler WHERE id = 2</li>
             <li>Tablo Oluşturma :
                 CREATE TABLE Kisiler (
                 id int AUTO_INCREMENT,
